@@ -124,3 +124,69 @@ function salvarVinho(numero, nome, tipo, safra, quantidade) {
             break;
     }
 }
+
+// cadastro
+function cadastrarVinho() {
+    let nome = validarNome();
+    let tipo = validarTipo();
+    let safra = validarNumero("Digite a safra do vinho (ano):", 1900, anoAtual);
+    let quantidade = validarNumero("Digite a quantidade em estoque:", 0, 1000);
+
+    cadastros++;
+    salvarVinho(cadastros, nome, tipo, safra, quantidade);
+
+    if (verificarEstoque(quantidade)) {
+        estoqueBaixo++;
+    }
+
+    if (cadastros == 1 || safra < safraMaisAntiga) {
+        safraMaisAntiga = safra;
+        nomeMaisAntigo = nome;
+    }
+
+    alert("Cadastro realizado! Veja os detalhes do vinho no console.");
+    mostrarVinho(cadastros, nome, tipo, safra, quantidade);
+}
+
+// resumo final
+function mostrarResumo() {
+    alert("A seguir, veja todos os vinhos cadastrados e o resumo no console.");
+
+    for (let i = 1; i <= cadastros; i++) {
+        switch (i) {
+            case 1: mostrarVinho(1, nome1, tipo1, safra1, quant1); break;
+            case 2: mostrarVinho(2, nome2, tipo2, safra2, quant2); break;
+            case 3: mostrarVinho(3, nome3, tipo3, safra3, quant3); break;
+            case 4: mostrarVinho(4, nome4, tipo4, safra4, quant4); break;
+            case 5: mostrarVinho(5, nome5, tipo5, safra5, quant5); break;
+        }
+    }
+
+    console.log("===== RESUMO =====");
+    console.log("Cadastros feitos: " + cadastros);
+    console.log("Vinhos com estoque baixo: " + estoqueBaixo);
+    console.log("Vinho com a safra mais antiga: " + nomeMaisAntigo + " (" + safraMaisAntiga + ")");
+
+    alert(
+        "RESUMO\n\n" +
+        "Cadastros feitos: " + cadastros + "\n" +
+        "Vinhos com estoque baixo: " + estoqueBaixo + "\n" +
+        "Safra mais antiga: " + nomeMaisAntigo + " (" + safraMaisAntiga + ")"
+    );
+}
+
+// inicio do sistema
+let continuar;
+
+do {
+    cadastrarVinho();
+
+    if (cadastros == 5) {
+        alert("Limite de 5 vinhos atingido!");
+        continuar = false;
+    } else {
+        continuar = validarResposta();
+    }
+} while (continuar);
+
+mostrarResumo();

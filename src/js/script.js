@@ -71,3 +71,56 @@ function validarResposta() {
 
     return resposta == "S" || resposta == "s";
 }
+
+// estoque e classificação
+function verificarEstoque(quantidade) {
+    return quantidade < 5;
+}
+
+function classificarVinho(safra) {
+    let idade = anoAtual - safra;
+
+    if (idade <= 3) {
+        return "Jovem";
+    } else if (idade <= 10) {
+        return "Amadurecido";
+    } else {
+        return "Antigo";
+    }
+}
+
+// mostrar no console
+function mostrarVinho(numero, nome, tipo, safra, quantidade) {
+    console.log("===== VINHO " + numero + " =====");
+    console.log("Nome do vinho: " + nome);
+    console.log("Tipo: " + tipo);
+    console.log("Safra: " + safra);
+    console.log("Idade do vinho: " + (anoAtual - safra) + " ano(s)");
+    console.log("Classificação: " + classificarVinho(safra));
+    console.log("Quantidade em estoque: " + quantidade);
+
+    if (verificarEstoque(quantidade)) {
+        console.log("Estoque baixo!");
+    }
+}
+
+// salva o vinho na variável certa
+function salvarVinho(numero, nome, tipo, safra, quantidade) {
+    switch (numero) {
+        case 1:
+            nome1 = nome; tipo1 = tipo; safra1 = safra; quant1 = quantidade;
+            break;
+        case 2:
+            nome2 = nome; tipo2 = tipo; safra2 = safra; quant2 = quantidade;
+            break;
+        case 3:
+            nome3 = nome; tipo3 = tipo; safra3 = safra; quant3 = quantidade;
+            break;
+        case 4:
+            nome4 = nome; tipo4 = tipo; safra4 = safra; quant4 = quantidade;
+            break;
+        case 5:
+            nome5 = nome; tipo5 = tipo; safra5 = safra; quant5 = quantidade;
+            break;
+    }
+}

@@ -23,7 +23,7 @@ O que foi feito:
 
 ## Link para acessar a página
 
-https://fcrociatti.github.io/vinheria-agnello-checkpoint02/
+https://fcrociatti.github.io/vinharia-agnello2/
 
 ## Realizado por
 
